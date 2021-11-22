@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import SearchForm from "./SearchForm";
+import SearchForm from "../SearchForm";
 import ListingCard from "./ListingCard";
-import SharebnbApi from "./SharebnbApi";
+import SharebnbApi from "../api/SharebnbApi";
 import AddListingForm from "./AddListingForm";
-import Loading from "./Loading";
+import Loading from "../Loading";
 // import Error from "./Error";
 
 /** Lists all the listings
@@ -48,6 +48,8 @@ function ListingList() {
   //   }
 
   async function addListing(formData) {
+
+    console.log(formData, "Listing LIST ");
     await SharebnbApi.createListing(formData);
     setIsLoading(true);
   }

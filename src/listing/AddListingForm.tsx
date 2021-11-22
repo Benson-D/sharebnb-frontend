@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./AddListingForm.css";
+import UserContext from "../auth/UserContext";
 
-const INITIAL_DATA = {
-  name: "",
-  price: 0,
-  image: "",
-  description: "",
-  location: "",
-};
+
+
+
 
 /** Renders a Form for new listing
  *
@@ -18,12 +15,26 @@ const INITIAL_DATA = {
  */
 
 function AddListingForm({ AddListing }) {
+
+
+  // @ts-ignore
+  const { currUser } = useContext(UserContext);
+
+  const INITIAL_DATA = {
+    name: "",
+    address: "",
+    price: 0,
+    description: "",
+    location: "",
+    created: currUser.username
+  };
+
   const [formData, setFormData] = useState(INITIAL_DATA);
 
   /**Handles change for name, price, description, location */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    setFormData((previousData) => ({ ...previousData, [name]: value }));
+    setFormData((previousData) => ({ ...previousData, [name]: value, }));
   }
 
   /**Handles file upload.
@@ -46,6 +57,7 @@ function AddListingForm({ AddListing }) {
     await AddListing(sendData);
   }
 
+  console.log({formData});
   return (
     <div className="AddListingForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
       <h3>Add a new listing!</h3>
@@ -58,20 +70,27 @@ function AddListingForm({ AddListing }) {
                 required
                 type="text"
                 name="name"
-                id="name"
                 value={formData.name}
                 placeholder="Name of your listing..."
                 onChange={handleChange}
-              ></input>
+              />
             </div>
             <div className="mb-3">
-              {" "}
+              <label className="form-label">Address</label>
+              <input
+                required
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
               <label className="form-label">Description</label>
               <input
                 required
                 type="text"
                 name="description"
-                id="description"
                 value={formData.description}
                 placeholder="Description of your listing..."
                 onChange={handleChange}
@@ -83,7 +102,6 @@ function AddListingForm({ AddListing }) {
                 required
                 type="number"
                 name="price"
-                id="price"
                 value={formData.price}
                 placeholder="Price of your listing..."
                 onChange={handleChange}
@@ -94,8 +112,7 @@ function AddListingForm({ AddListing }) {
               <input
                 required
                 type="text"
-                name="location"
-                id="location"
+                name="location"          
                 value={formData.location}
                 placeholder="Location of your listing..."
                 onChange={handleChange}
@@ -107,15 +124,20 @@ function AddListingForm({ AddListing }) {
                 required
                 type="file"
                 name="image"
-                id="image"
                 placeholder="Image of your listing..."
                 onChange={handleFile}
               />
             </div>
+              {/* <input
+                  required
+                  name="created"
+                  value={currUser.username}
+                  onChange={handleFile}
+                  hidden
+                /> */}
             <div className="d-grid">
               <button className="AddListingForm-btn btn btn-info">
-                {" "}
-                Add your listing{" "}
+                Add your listing
               </button>
             </div>
           </form>

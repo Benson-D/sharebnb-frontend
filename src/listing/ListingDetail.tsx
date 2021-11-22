@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SharebnbApi from "./SharebnbApi";
+import SharebnbApi from "../api/SharebnbApi";
 import "./ListingDetail.css";
-import Loading from "./Loading";
+import Loading from "../Loading";
 // import Error from "./Error";
 
 /** Renders detail of one Listing
@@ -44,6 +44,7 @@ function ListingDetail() {
   return (
     <div className="ListingDetail col-md-8 offset-md-2">
       <h2 className="ListingDetail">{currentListing.name}</h2>
+      <p className="ListingDetail">{currentListing.address}</p>
       <p className="ListingDetail">{currentListing.description}</p>
       <p className="ListingDetail">${price.toLocaleString()}</p>
       <p className="ListingDetail">{currentListing.location}</p>
