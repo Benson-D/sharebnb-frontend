@@ -1,24 +1,21 @@
 import { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import "./AddListingForm.css";
 import UserContext from "../auth/UserContext";
-
-
-
-
+import SharebnbApi from "../api/SharebnbApi";
 
 /** Renders a Form for new listing
  *
  * Props: AddListing fn
  * State: formData
  *
- * ListingList -> AddListingForm
+ * Routes -> AddListingForm
  */
 
-function AddListingForm({ AddListing }) {
-
-
+function AddListingForm() {
   // @ts-ignore
   const { currUser } = useContext(UserContext);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const INITIAL_DATA = {
     name: "",
@@ -30,6 +27,12 @@ function AddListingForm({ AddListing }) {
   };
 
   const [formData, setFormData] = useState(INITIAL_DATA);
+
+  async function addListing(formData) {
+    console.log(formData, "Listing LIST ");
+    await SharebnbApi.createListing(formData);
+  }
+
 
   /**Handles change for name, price, description, location */
   function handleChange(evt) {
@@ -54,7 +57,18 @@ function AddListingForm({ AddListing }) {
     for (let key in formData) {
       sendData.append(key, formData[key]);
     }
-    await AddListing(sendData);
+
+    try {
+      await addListing(sendData)
+      setSubmitSuccess(true)
+    } catch(err) {
+      console.error(err.message)
+    }
+    
+  }
+
+  if (submitSuccess) {
+    return <Redirect to="/listings"/>
   }
 
   console.log({formData});
@@ -128,13 +142,6 @@ function AddListingForm({ AddListing }) {
                 onChange={handleFile}
               />
             </div>
-              {/* <input
-                  required
-                  name="created"
-                  value={currUser.username}
-                  onChange={handleFile}
-                  hidden
-                /> */}
             <div className="d-grid">
               <button className="AddListingForm-btn btn btn-info">
                 Add your listing

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import SearchForm from "../SearchForm";
 import ListingCard from "./ListingCard";
 import SharebnbApi from "../api/SharebnbApi";
-import AddListingForm from "./AddListingForm";
 import Loading from "../Loading";
 // import Error from "./Error";
 
@@ -47,13 +46,6 @@ function ListingList() {
   //     return <Error errors={errors} />;
   //   }
 
-  async function addListing(formData) {
-
-    console.log(formData, "Listing LIST ");
-    await SharebnbApi.createListing(formData);
-    setIsLoading(true);
-  }
-
   async function deleteListing(id) {
     await SharebnbApi.deleteListing(id);
     setIsLoading(true);
@@ -71,7 +63,6 @@ function ListingList() {
           deleteListing={deleteListing}
         />
       ))}
-      <AddListingForm AddListing={addListing} />
     </div>
   );
 }

@@ -38,6 +38,11 @@ function NavBar({ logOut }) {
             </NavLink>
           </li>
           <li className="nav-item me-4">
+            <NavLink className="nav-link" exact to="/addlisting">
+              Host a place
+            </NavLink>
+          </li>
+          <li className="nav-item me-4">
               <Link className="nav-link" to="/" onClick={logOut}>
                 Log out {currUser.username}
               </Link>

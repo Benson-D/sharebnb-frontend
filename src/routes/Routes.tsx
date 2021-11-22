@@ -5,7 +5,7 @@ import ListingList from "../listing/ListingList";
 import ListingDetail from "../listing/ListingDetail";
 import SignUpForm from "../auth/SignUpForm";
 import LoginForm from "../auth/LoginForm";
-// import AddListingForm from './AddListingForm'
+import AddListingForm from "../listing/AddListingForm";
 
 /**Renders Routes
  *
@@ -41,6 +41,9 @@ function Routes({signUpUser, loginUser, currUser,}: any) {
           </Route>
           <Route exact path="/listings/:id">
             <ListingDetail />
+          </Route>
+          <Route exact path="/addlisting">
+            <AddListingForm />
           </Route>
         </>
       )}
