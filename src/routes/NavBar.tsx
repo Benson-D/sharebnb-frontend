@@ -12,7 +12,7 @@ import UserContext from "../auth/UserContext";
  */
 
 function NavBar({ logOut }) {
-  // @ts-ignore
+
   const { currUser } = useContext(UserContext);
 
   const navLoggedOut = () => (

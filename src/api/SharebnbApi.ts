@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LoginFormInterface, SignUpFormInterface } from "../interfaces/auth";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
@@ -40,17 +41,17 @@ class SharebnbApi {
   
   /** Function signs up users. Returns { token } */
   static async signUp(
-    { username, password, email, first_name, last_name, bio, location }) {
+    { username, password, email, first_name, last_name, location }: SignUpFormInterface): Promise<string> {
     const res = await this.request(
       "signup",
-      { username, password, email, first_name, last_name, bio, location },
+      { username, password, email, first_name, last_name, location },
       "post"
     );
     return res.token;
   }
 
    /** Function logs in a user. Returns { token } */
-   static async login(data) {
+   static async login(data: LoginFormInterface): Promise<string> {
     const res = await this.request(
       "login",
       data,

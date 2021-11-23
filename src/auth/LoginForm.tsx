@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
 // import Errors from "../Errors";
@@ -17,19 +17,18 @@ const INITIAL_STATE = { username: "", password: "" };
 
 function LoginForm({ loginUser }) {
 
-  // @ts-ignore
   const { currUser } = useContext(UserContext);
   
   const [formData, setFormData] = useState(INITIAL_STATE);
   const [error, setError] = useState(null);
   console.log("LoginForm", { formData, error });
 
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((formData) => ({ ...formData, [name]: value.trim() }));
   }
 
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     try {
       await loginUser(formData);

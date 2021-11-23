@@ -1,6 +1,6 @@
 import React from "react";
+import { ContextInterface } from "../interfaces/auth";
 
-// @ts-ignore
-const UserContext = React.createContext();
+const UserContext = React.createContext<ContextInterface | null>(null);
 
 export default UserContext;

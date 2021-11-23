@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 import NavBar from "./routes/NavBar";
 import Routes from "./routes/Routes";
 import UserContext from "./auth/UserContext";
 import SharebnbApi from "./api/SharebnbApi";
 import Loading from "./Loading";
 import jwt from "jsonwebtoken";
+import { 
+  UserInterface, 
+  LoginFormInterface, 
+  SignUpFormInterface 
+} from "./interfaces/auth";
+
 
 /** Renders Sharebnb App
  *
@@ -18,7 +24,7 @@ import jwt from "jsonwebtoken";
 
 function App() {
 
-  const [currUser, setCurrUser] = useState(null);
+  const [currUser, setCurrUser] = useState<UserInterface | null>(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,14 +52,14 @@ function App() {
     [token]
   );
 
-  async function signUpUser(formData) {
+  async function signUpUser(formData: SignUpFormInterface) {
     const token = await SharebnbApi.signUp(formData);
     console.log("token from signUpUser has passed", { token });
     localStorage.setItem("token", token);
     setToken(token);
   }
 
-  async function loginUser(formData) {
+  async function loginUser(formData: LoginFormInterface) {
     console.log({formData}, "login formdata")
     const token = await SharebnbApi.login(formData);
     console.log("token from loginUser has passed", { token });

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import "./AddListingForm.css";
 import UserContext from "../auth/UserContext";
@@ -13,7 +13,7 @@ import SharebnbApi from "../api/SharebnbApi";
  */
 
 function AddListingForm() {
-  // @ts-ignore
+
   const { currUser } = useContext(UserContext);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -35,14 +35,14 @@ function AddListingForm() {
 
 
   /**Handles change for name, price, description, location */
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((previousData) => ({ ...previousData, [name]: value, }));
   }
 
   /**Handles file upload.
    * Sets formData state to include selected file  */
-  function handleFile(evt) {
+  function handleFile(evt: React.ChangeEvent<HTMLInputElement>) {
     const image = evt.target.files[0];
     setFormData((previousData) => ({ ...previousData, image: image }));
   }
@@ -50,7 +50,7 @@ function AddListingForm() {
   /**Handles form submission. Builds instance of FormData class
    * and calls addListing fn
    */
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent) {
     evt.preventDefault();
     const sendData = new FormData();
 
