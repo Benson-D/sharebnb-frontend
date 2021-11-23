@@ -1,5 +1,9 @@
 import axios from "axios";
-import { LoginFormInterface, SignUpFormInterface } from "../interfaces/auth";
+import { 
+  UserInterface, 
+  LoginFormInterface, 
+  SignUpFormInterface 
+} from "../interfaces/auth";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
@@ -9,13 +13,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
  *
  */
 
-// interface AxiosParameters {
-//   url: string;
-//   method: string;
-//   data: object | null;
-//   params: object | null;
-//   headers: object;
-// }
+
 
 class SharebnbApi {
 
@@ -61,7 +59,7 @@ class SharebnbApi {
   }
 
   /** Get user info by username */
-  static async getUser(username) {
+  static async getUser(username: string): Promise<UserInterface> {
     const res = await this.request(`users/${username}`);
     console.log(res.user, "has been passed through to API");
     return res.user;
@@ -69,13 +67,13 @@ class SharebnbApi {
 
 
   /** Get list of Listings. Returns [{listing}}, {listing}, {listing}]*/
-  static async getListings(searchTerm) {
+  static async getListings(searchTerm: string | undefined) {
     const res = await this.request("listings", {location: searchTerm});
     return res.listings;
   }
 
   /** Get a specific listing. Returns {listing}*/
-  static async getListing(id) {
+  static async getListing(id: string) {
     const res = await this.request(`listings/${id}`);
     return res.listing;
   }
@@ -110,7 +108,7 @@ class SharebnbApi {
   }
 
   /** Function deletes a listing. Returns "ListingId successfully deleted"*/
-  static async deleteListing(listingId) {
+  static async deleteListing(listingId: string) {
     const res = await this.request(`listings/${listingId}`, {}, "delete");
 
     return res.deleted;

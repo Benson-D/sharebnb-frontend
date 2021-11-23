@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
 // import Errors from "../Errors";
 // import "./SignupForm.css";
+import { SignUpFormInterface } from "../interfaces/auth";
 
 /** Renders signUpForm
  *
@@ -25,7 +26,7 @@ const INITIAL_STATE = {
 function SignUpForm({ signUpUser }) {
 
   const { currUser } = useContext(UserContext);
-  const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formData, setFormData] = useState<SignUpFormInterface>(INITIAL_STATE);
   const [error, setError] = useState(null);
   console.log("SignUpForm", { formData });
 

@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
 // import Errors from "../Errors";
 // import "./LoginForm.css";
+import { LoginFormInterface } from "../interfaces/auth";
 
 /** Renders Login form
  *
@@ -19,7 +20,7 @@ function LoginForm({ loginUser }) {
 
   const { currUser } = useContext(UserContext);
   
-  const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formData, setFormData] = useState<LoginFormInterface>(INITIAL_STATE);
   const [error, setError] = useState(null);
   console.log("LoginForm", { formData, error });
 
