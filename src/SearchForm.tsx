@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import "./SearchForm.css";
 
 /** Renders search bar
@@ -24,28 +25,25 @@ function SearchForm({ submitSearch, initialData }) {
 
   return (
     <div className="SearchForm mb-4">
-      <form onSubmit={handleSubmit}>
+      <form className="SearchForm-form" onSubmit={handleSubmit}>
         <div className="row justify-content-center justify-content-lg-start gx-0">
-          <div className="col-8">
+          <div className="SearchForm__input input-group">
             <input
-              className="form-control form-control-lg"
+              className="form-control rounded"
               type="text"
               value={formData}
-              placeholder="Enter search term ..."
+              placeholder="Where would you like to go?"
               onChange={handleChange}
             />
-            <div className="col-auto">
-              <button
-                type="submit"
-                className="SearchForm-btn btn btn-lg btn-info"
-              >
-                Search!!!
-              </button>
-            </div>
           </div>
         </div>
+        <div className="col-2">
+          <button type="submit" className="SearchForm-btn btn btn-primary btn-lg">
+            <FaSearch />
+          </button>
+        </div>
       </form>
-    </div>
+  </div>
   );
 }
 

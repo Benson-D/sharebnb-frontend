@@ -1,6 +1,11 @@
 .SearchForm {
   margin-top: 13px;
-  margin-left: 22rem;
+  display: flex;
+  justify-content: center;
+}
+
+.SearchForm__input {
+  width: 20rem;
 }
 
 .SearchForm input:focus {
@@ -9,6 +14,16 @@
 }
 
 .SearchForm-btn {
-  background-color: #39b2e9;
-  border-color: #39b2e9;
+  background-color: #ff385c;
+  border-color: #ff385c;
+  margin-right: 9px;
+}
+
+.SearchForm-btn:hover {
+  background-color: #ff6480;
+  border: none;
+}
+
+.SearchForm-form {
+  display: flex;
 }
