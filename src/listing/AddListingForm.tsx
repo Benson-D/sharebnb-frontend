@@ -83,9 +83,9 @@ function AddListingForm() {
               <input
                 required
                 type="text"
+                className="form-control"
                 name="name"
                 value={formData.name}
-                placeholder="Name of your listing..."
                 onChange={handleChange}
               />
             </div>
@@ -94,6 +94,7 @@ function AddListingForm() {
               <input
                 required
                 type="text"
+                className="form-control"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
@@ -104,9 +105,9 @@ function AddListingForm() {
               <input
                 required
                 type="text"
+                className="form-control"
                 name="description"
                 value={formData.description}
-                placeholder="Description of your listing..."
                 onChange={handleChange}
               />
             </div>
@@ -115,9 +116,9 @@ function AddListingForm() {
               <input
                 required
                 type="number"
+                className="form-control"
                 name="price"
                 value={formData.price}
-                placeholder="Price of your listing..."
                 onChange={handleChange}
               />
             </div>
@@ -126,9 +127,9 @@ function AddListingForm() {
               <input
                 required
                 type="text"
+                className="form-control"
                 name="location"          
                 value={formData.location}
-                placeholder="Location of your listing..."
                 onChange={handleChange}
               />
             </div>
@@ -137,8 +138,8 @@ function AddListingForm() {
               <input
                 required
                 type="file"
+                className="form-control"
                 name="image"
-                placeholder="Image of your listing..."
                 onChange={handleFile}
               />
             </div>

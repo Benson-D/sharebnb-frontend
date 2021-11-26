@@ -1,9 +1,13 @@
+.AddListingForm {
+  margin-top: 1rem;
+}
+
 .AddListingForm h3 {
   color: #ffffff;
   text-shadow: 2px 2px 5px rgb(52, 48, 47);
 }
 
 .AddListingForm-btn {
-  background-color: #39b2e9;
-  border-color: #39b2e9;
+  background-color: #ff385c;
+  border-color: #ff385c;
 }
