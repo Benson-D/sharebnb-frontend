@@ -54,7 +54,7 @@ function ListingList() {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="background-theme">
+    <section className="background-theme col-md-8 offset-md-2">
       <SearchForm submitSearch={searchListings} initialData={searchTerm} />
       {listings.map((listing) => (
         <ListingCard
@@ -63,7 +63,7 @@ function ListingList() {
           deleteListing={deleteListing}
         />
       ))}
-    </div>
+    </section>
   );
 }
 

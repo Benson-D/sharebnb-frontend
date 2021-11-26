@@ -18,7 +18,7 @@ function ListingDetail() {
   const [isLoading, setIsLoading] = useState(true);
   //   const [errors, setErrors] = useState(null);
 
-  const { id } = useParams();
+  const { id }: {id: string} = useParams();
 
   useEffect(
     function getListing() {
@@ -37,19 +37,43 @@ function ListingDetail() {
     [id]
   );
 
-  //   if (errors.length < 1) return <Error errors={errors} />;
+  //   if (errors.length < 1) return <Error errors={errors}/>;
   if (isLoading) return <Loading />;
   const price = +currentListing.price;
 
   return (
-    <div className="ListingDetail col-md-8 offset-md-2">
-      <h2 className="ListingDetail">{currentListing.name}</h2>
-      <p className="ListingDetail">{currentListing.address}</p>
-      <p className="ListingDetail">{currentListing.description}</p>
-      <p className="ListingDetail">${price.toLocaleString()}</p>
-      <p className="ListingDetail">{currentListing.location}</p>
+    <div className="ListingDetail col-md-8 col-sm-8 offset-md-2 offset-sm-2">
+      <h2 className="p-3">         
+        {currentListing.name}
+      </h2>
       <div>
-        <img src={currentListing.image} alt="listing_image" />
+        <img 
+          src={currentListing.image} 
+          alt="listing_image" 
+          className="rounded img-fluid"
+        />
+      </div>
+      <div className="mt-2">
+        <div className="row">
+          <div className="col mx-4">
+            <h4>Detail</h4>
+            <hr />
+            <p className="text-start fs-5">
+              <span className="fw-bolder">Address: </span>
+              {currentListing.address}
+            </p>
+            <p className="text-start fs-5">
+            <span className="fw-bolder">Location: </span>
+              {currentListing.location}
+            </p>
+            <p className="text-start fs-5">
+              {currentListing.description}
+            </p>
+            <p className="text-start fs-5">
+              ${price.toLocaleString()} / night
+            </p>
+          </div>
+        </div> 
       </div>
     </div>
   );

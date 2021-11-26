@@ -33,12 +33,12 @@ function NavBar({ logOut }) {
   const navLoggedIn = () => (
         <ul className="navbar-nav ms-auto">
           <li className="nav-item me-4">
-            <NavLink className="nav-link" exact to="/listings">
+            <NavLink className="nav-link" to="/listings">
               Listings
             </NavLink>
           </li>
           <li className="nav-item me-4">
-            <NavLink className="nav-link" exact to="/addlisting">
+            <NavLink className="nav-link" to="/addlisting">
               Host a place
             </NavLink>
           </li>
@@ -53,7 +53,7 @@ function NavBar({ logOut }) {
   return (
     <nav className="NavBar navbar navbar-expand-md">
       <div className="container-fluid">
-        <Link className="nav-brand" to="/">
+        <Link className="NavBar__home navbar-brand" to="/">
           ShareBnB
         </Link>
         {currUser ? navLoggedIn() : navLoggedOut()}

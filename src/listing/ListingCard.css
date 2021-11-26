@@ -1,36 +1,32 @@
-.ListingCard {
-  max-height: 260px;
-  margin-bottom: 1rem;
-  color: inherit;
+.ListingCard a {
   text-decoration: none;
-  border-radius: 0;
-  border: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: inherit;
+}
+
+.ListingCard {
+  max-width: 840px;
+  width: 100%;
 }
 
 .ListingCard img {
-  width: 120px;
+  height: 250px;
+  width: 100%;
 }
 
-.ListingCard:hover {
-  /* <Card /> that is also <Link /> */
-  text-decoration: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+.ListingCard p {
+  font-size: 1.2rem;
 }
 
-.ListingCard-image-container {
-  display: flex;
-  justify-content: center;
-  margin-right: 44px;
+
+@media only screen and (max-width: 55.2em) {
+  .ListingCard {
+    max-width: 540px;
+  }
 }
 
-.ListingCard-btn-container {
-  position: relative;
-}
-
-.ListingCard-btn {
-  width: 12%;
-  position: absolute;
-  right: 20px;
-  bottom: 5px;
+@media only screen and (max-width: 48.1em) {
+  .ListingCard img {
+    height: 350px;
+  }
+  
 }

@@ -35,13 +35,19 @@ function App() {
       async function fetchCurrUser() {
         if (token) {
           SharebnbApi.token = token;
-          const { username }  = jwt.decode(token);
-    
-          console.log(username, "This is current username");
-          const user = await SharebnbApi.getUser(username);
-          console.log({ user }, "User info from fetchCurrUser");
-          setCurrUser(user);
           
+          console.log(token, "token")
+          // @ts-ignore
+          const { username }  = jwt.decode(token);
+          console.log(username, "username")
+
+          try {
+            const user = await SharebnbApi.getUser(username);
+            console.log({ user }, "User info from fetchCurrUser");
+            setCurrUser(user);
+          } catch (err) {
+            console.error(err.message);
+          }
         }
         setIsLoading(true);
       }

@@ -3,7 +3,20 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
 
+.NavBar__home {
+  color: #ff385c;
+}
+
+.nav-link, .NavBar__home:hover {
+  color: black;
+}
+
+.nav-link:hover {
+  color: #ff385c;
+}
+
 .nav-link.active {
   font-weight: bold;
   color: black;
+  border-bottom: 3px solid #ff385c;
 }
