@@ -13,8 +13,6 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
  *
  */
 
-
-
 class SharebnbApi {
 
   static token: string; 
@@ -22,7 +20,6 @@ class SharebnbApi {
   static async request(endpoint: string, data = {}, method = "get"): Promise<any> {
     console.debug("API Call:", endpoint, data, method);
 
-    // const content = typeFile ? "multipart/form-data" : "application/json";
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${SharebnbApi.token }`};
     const params = method === "get" ? data : {};
@@ -67,7 +64,7 @@ class SharebnbApi {
 
 
   /** Get list of Listings. Returns [{listing}}, {listing}, {listing}]*/
-  static async getListings(searchTerm: string | undefined) {
+  static async getListings(searchTerm: string ) {
     const res = await this.request("listings", {location: searchTerm});
     return res.listings;
   }
