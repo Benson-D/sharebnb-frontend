@@ -30,3 +30,13 @@ button:active {
 label {
   font-weight: bold;
 }
+
+.btn {
+  background-color: #ff385c;
+  border-color: #ff385c;
+}
+
+.btn-primary:hover {
+  background-color: #ff6480;
+  border-color: #ff6480;;
+}

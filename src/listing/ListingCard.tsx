@@ -22,6 +22,8 @@ function ListingCard({ listing, deleteListing }) {
     await deleteListing(listing.id);
   }
 
+  console.log(listing.image, "image")
+
   const price = +listing.price;
 
   return (

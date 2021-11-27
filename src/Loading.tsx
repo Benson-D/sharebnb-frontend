@@ -29,6 +29,7 @@ function Loading({ text = "Loading", speed = 300 }) {
       style={{
         fontSize: "35px",
         position: "absolute",
+        color: "#ffffff",
         left: "0",
         right: "0",
         marginTop: "20px",

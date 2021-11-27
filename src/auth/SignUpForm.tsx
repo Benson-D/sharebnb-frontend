@@ -50,8 +50,7 @@ function SignUpForm({ signUpUser }) {
 
   return (
     <div className="SignUpForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-      <h3>Sign Up</h3>
-      <div className="SignUpForm-card card">
+      <div className="SignUpForm-card card my-4">
         <div className="card-body">
           <form className="Signup-Form" onSubmit={handleSubmit}>
             <div className="mb-3">

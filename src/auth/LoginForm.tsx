@@ -46,9 +46,7 @@ function LoginForm({ loginUser }) {
   return (
     <section className="LoginForm">
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-      
-        <h3 className="mb-3">Log In</h3>
-        <div className="LoginForm-card card">
+        <div className="LoginForm-card card my-4">
           <div className="card-body">
             <form className="LoginForm-Form" onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -71,7 +69,6 @@ function LoginForm({ loginUser }) {
                   onChange={handleChange}
                 />
               </div>
-              
               <button className="btn btn-primary"> Log In! </button>    
             </form>
           </div>

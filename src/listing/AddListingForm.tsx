@@ -7,7 +7,10 @@ import SharebnbApi from "../api/SharebnbApi";
 /** Renders a Form for new listing
  *
  * Props: AddListing fn
- * State: formData
+ * State: 
+ *    formData { name, address, price, description, location,     
+ *               created }
+ *    submitSuccess: boolean
  *
  * Routes -> AddListingForm
  */
@@ -15,8 +18,7 @@ import SharebnbApi from "../api/SharebnbApi";
 function AddListingForm() {
 
   const { currUser } = useContext(UserContext);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
+  
   const INITIAL_DATA = {
     name: "",
     address: "",
@@ -25,7 +27,8 @@ function AddListingForm() {
     location: "",
     created: currUser.username
   };
-
+  
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formData, setFormData] = useState(INITIAL_DATA);
 
   async function addListing(formData) {
@@ -33,8 +36,7 @@ function AddListingForm() {
     await SharebnbApi.createListing(formData);
   }
 
-
-  /**Handles change for name, price, description, location */
+  /**Handles change for name, address, price, description, location, created */
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((previousData) => ({ ...previousData, [name]: value, }));
@@ -71,9 +73,8 @@ function AddListingForm() {
     return <Redirect to="/listings"/>
   }
 
-  console.log({formData});
   return (
-    <div className="AddListingForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+    <div className="AddListingForm col-sm-8  col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4">
       <h3>Add a new listing!</h3>
       <div className="card">
         <div className="card-body">
@@ -144,7 +145,7 @@ function AddListingForm() {
               />
             </div>
             <div className="d-grid">
-              <button className="AddListingForm-btn btn btn-info">
+              <button className="AddListingForm-btn btn btn-primary">
                 Add your listing
               </button>
             </div>
