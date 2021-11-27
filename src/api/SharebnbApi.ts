@@ -29,7 +29,7 @@ class SharebnbApi {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err: any) {
       console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
+      let message = err.response.data.errors;
       throw Array.isArray(message) ? message : [message];
     }
   }
@@ -47,11 +47,8 @@ class SharebnbApi {
 
    /** Function logs in a user. Returns { token } */
    static async login(data: LoginFormInterface): Promise<string> {
-    const res = await this.request(
-      "login",
-      data,
-      "post"
-    );
+    const res = await this.request("login", data, "post");
+
     return res.token;
   }
 

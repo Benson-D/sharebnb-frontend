@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
-// import Errors from "../Errors";
-// import "./LoginForm.css";
+import Errors from "../Errors";
 import { LoginFormInterface } from "../interfaces/auth";
 
 /** Renders Login form
@@ -22,7 +21,6 @@ function LoginForm({ loginUser }) {
   
   const [formData, setFormData] = useState<LoginFormInterface>(INITIAL_STATE);
   const [error, setError] = useState(null);
-  console.log("LoginForm", { formData, error });
 
   function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
@@ -34,10 +32,12 @@ function LoginForm({ loginUser }) {
     try {
       await loginUser(formData);
     } catch (err) {
-      console.log(err, "Catch error of Login Form");
+      console.error(err, "Catch error of Login Form");
       setError(err);
     }
   }
+
+  console.log(error, "error report");
 
   if (currUser) {
     return <Redirect to="/" />;
@@ -69,6 +69,9 @@ function LoginForm({ loginUser }) {
                   onChange={handleChange}
                 />
               </div>
+
+              {error && <Errors errors={error} />}
+
               <button className="btn btn-primary"> Log In! </button>    
             </form>
           </div>

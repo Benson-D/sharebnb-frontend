@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import SharebnbApi from "../api/SharebnbApi";
 import "./ListingDetail.css";
 import Loading from "../Loading";
-// import Error from "./Error";
+import Errors from "../Errors";
 
 /** Renders detail of one Listing
  *
@@ -16,7 +16,7 @@ import Loading from "../Loading";
 function ListingDetail() {
   const [currentListing, setCurrentListing] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  //   const [errors, setErrors] = useState(null);
+    const [errors, setErrors] = useState(null);
 
   const { id }: {id: string} = useParams();
 
@@ -29,7 +29,7 @@ function ListingDetail() {
           setIsLoading(false);
         } catch (err) {
           console.error(err);
-          //   setErrors(err);
+          setErrors(err);
         }
       }
       fetchListing();
@@ -37,8 +37,10 @@ function ListingDetail() {
     [id]
   );
 
-  //   if (errors.length < 1) return <Error errors={errors}/>;
+  if (errors.length < 1) return <Errors errors={errors}/>;
+
   if (isLoading) return <Loading />;
+  
   const price = +currentListing.price;
 
   return (

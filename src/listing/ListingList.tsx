@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm";
 import ListingCard from "./ListingCard";
 import SharebnbApi from "../api/SharebnbApi";
 import Loading from "../Loading";
-// import Error from "./Error";
+import Errors from "../Errors";
 
 /** Lists all the listings
  *
@@ -17,7 +17,7 @@ function ListingList() {
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  //   const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   useEffect(
     function fetchListings() {
@@ -29,7 +29,7 @@ function ListingList() {
           setIsLoading(false);
         } catch (err) {
           console.error(err);
-          //   setErrors((previousErrors) => [...previousErrors, ...err]);
+          setErrors((previousErrors) => [...previousErrors, ...err]);
         }
       }
       getListingsFromApi();
@@ -42,9 +42,9 @@ function ListingList() {
     setIsLoading(true);
   }
 
-  //   if (errors.length > 0) {
-  //     return <Error errors={errors} />;
-  //   }
+  if (errors.length > 0) {
+      return <Errors errors={errors} />;
+    }
 
   async function deleteListing(id) {
     await SharebnbApi.deleteListing(id);

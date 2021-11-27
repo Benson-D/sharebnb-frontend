@@ -67,8 +67,7 @@ function App() {
 
   async function loginUser(formData: LoginFormInterface) {
     console.log({formData}, "login formdata")
-    const token = await SharebnbApi.login(formData);
-    console.log("token from loginUser has passed", { token });
+    let token = await SharebnbApi.login(formData);
     localStorage.setItem("token", token);
     setToken(token);
   }

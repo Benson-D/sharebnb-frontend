@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "./UserContext";
-// import Errors from "../Errors";
-// import "./SignupForm.css";
+import Errors from "../Errors";
 import { SignUpFormInterface } from "../interfaces/auth";
 
 /** Renders signUpForm
@@ -113,7 +112,7 @@ function SignUpForm({ signUpUser }) {
               />
             </div>
           
-            {error && <p>{error}</p>}
+            {error && <Errors errors={error} />}
   
             <button className="SignUpForm btn btn-primary"> Sign Up! </button>
           </form>
