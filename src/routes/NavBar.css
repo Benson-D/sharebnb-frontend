@@ -11,6 +11,10 @@
   color: black;
 }
 
+.nav-link {
+  font-size: 14px;
+}
+
 .nav-link:hover {
   color: #ff385c;
 }

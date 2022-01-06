@@ -51,7 +51,7 @@ function NavBar({ logOut }) {
   )
 
   return (
-    <nav className="NavBar navbar navbar-expand-md">
+    <nav className="NavBar navbar navbar-expand">
       <div className="container-fluid">
         <Link className="NavBar__home navbar-brand" to="/">
           ShareBnB
