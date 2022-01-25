@@ -37,7 +37,6 @@ function LoginForm({ loginUser }) {
     }
   }
 
-  console.log(error, "error report");
 
   if (currUser) {
     return <Redirect to="/" />;
